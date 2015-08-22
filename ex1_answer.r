@@ -30,6 +30,16 @@ df
 #6       Refinancer  LMI-bad     4
 
 
+# Subset and start filtering data
+
+df1 <- df[df$result == "LMI-good", ]
+
+#add percentages column to dataframe
+
+df$count_percent <- df$count / 100
+
+#Print the dataframe
+df
 
 
 
@@ -37,7 +47,7 @@ df
 
 result <- tapply(df$count, list(df$Buyer,df$result), mean)
 
-#result <- t(result)
+# plot the results <- t(result)
 
 barplot(result, beside = FALSE, legend = rownames(result))
 
@@ -48,10 +58,10 @@ barplot(result, beside = FALSE, legend = rownames(result))
 #df2 <- data.frame(tapply(df$count, list(df$Buyer,df$result), matrix))
 
 
-melt(df, id=c("Buyer","result"), measured="count")
+df3 <- melt(df, id=c("Buyer","result"), measured="count")
 
 
-df2 <- t(df2)
+df4 <- t(df3)
 
 tapply(df2[,3], list(df2[,1],df2[,2]), mean)
 
