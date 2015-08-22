@@ -37,7 +37,7 @@ df
 
 result <- tapply(df$count, list(df$Buyer,df$result), mean)
 
-result <- t(result)
+#result <- t(result)
 
 barplot(result, beside = FALSE, legend = rownames(result))
 
@@ -52,6 +52,8 @@ melt(df, id=c("Buyer","result"), measured="count")
 
 
 df2 <- t(df2)
+
+tapply(df2[,3], list(df2[,1],df2[,2]), mean)
 
 
 qplot(factor(df2$Investor))
