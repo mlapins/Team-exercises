@@ -34,9 +34,14 @@ df
 
 df1 <- df[df$result == "LMI-good", ]
 
+#add another column to dataframe
+
+df$count2 <- as.numeric(c(23,30,4,15,23,54))
+
 #add percentages column to dataframe
 
-df$count_percent <- df$count / 100
+df$count_percent <- round(df$count / df$count2 * 100, digits = 2)
+
 
 #Print the dataframe
 df
